@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int minimumDeletions(vector<int>& nums) {
+
+        int m=INT_MIN;
+        int i1,i2;
+        int n=INT_MAX;
+        int size=nums.size();
+
+        for(int i=0;i<nums.size();i++)
+        {
+            if(m<nums[i])
+            {
+                m=nums[i];
+                i1=i;
+            }
+
+            if(n>nums[i])
+            {
+                n=nums[i];
+                i2=i;
+            }
+        }
+        if (i2 > i1) 
+        swap(i2, i1);
+
+        // both from front
+        int front = max(i1, i2) + 1;
+
+        // both from back
+        int back = size - min(i1, i2);
+
+       // one from front, one from back
+        int mix = min((i1 + 1) + (size - i2), (i2 + 1 )+ (size - i1));
+
+
+        
+        
+        return min(front, min(back, mix));
+
+
+        
+    }
+};
