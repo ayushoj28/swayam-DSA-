@@ -1,0 +1,22 @@
+// User function template for C++
+class Solution {
+  public:
+    string removeDuplicates(string &s) {
+        // code here
+        int n=s.size();
+        
+        unordered_set<char>check;
+        string ans="";
+        
+        for(char c:s)
+        {
+            if(check.find(c)==check.end())
+            {
+                ans.push_back(c);
+                check.insert(c);
+            }
+            
+        }
+        return ans;
+    }
+};
