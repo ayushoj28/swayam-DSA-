@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
+
+
+        int row=mat.size();
+        int col=mat[0].size();
+
+
+        int rowindex=INT_MAX;
+        
+        int maxx=0;
+        vector<int>ans;
+
+        for(int i=0;i<row;i++)
+        {
+            int c1=0;
+            for(int j=0;j<col;j++)
+            {
+                if(mat[i][j]==1)
+                c1++;
+            }
+            if(c1>maxx)
+            {
+                maxx=c1;
+                rowindex=i;
+
+            }
+            else if(c1==maxx)
+            {
+                rowindex=min(rowindex,i);
+            }
+        }
+
+        ans.push_back(rowindex);
+        ans.push_back(maxx);
+        
+        return ans;
+        
+    }
+};
